@@ -1,0 +1,61 @@
+<!DOCTYPE Html>
+	<html>
+		<head>
+			<title>A Simple Meme Generator</title>
+		</head>
+		<body>
+			<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+			<form>
+			  <label>Meme Text</label>
+			  <input class="formItem" type="text" id="userText" oninput="updateText()"/>
+			  <input class="formItem" type="file" id="userPicture" onchange="updateImage"/> 
+			</form>
+
+			<div id="memeText">Example Text 
+			</div>
+			<div><img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="meme"</div>
+			
+			<style>
+				#memeText{
+				  font-size: 40px;
+				  color: white;
+				  text-shadow: black 0px 0px 10px;
+				  position: absolute;
+				  left: 25px;
+				  top: 300px;
+				  font-family: 'Anton', sans-serif;
+				   
+				}
+
+				form{
+				  display: flex;
+				  flex-direction: column;
+				  padding: 20px;
+				  width: 500px;
+				  align-items: center;
+				}
+
+				.formItem {
+				  margin: 10px;
+				}
+			</style>
+			
+			<script>
+				const updateText = () => {
+				  const userText = document.getElementById('userText');
+				  const memeText = document.getElementById('memeText');
+				  
+				  
+				  memeText.innerHTML = userText.value;
+				  
+				}
+
+				const updateImage = () => {
+				  const img = document.querySelector('img');
+				  const file = document.querySelector('input[type=file]').files[0];
+				  img.src = window.URL.createObjectURL(file);
+				}
+			</script>
+		</body>
+</html>
